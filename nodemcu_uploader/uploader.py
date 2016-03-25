@@ -63,7 +63,7 @@ class Uploader(object):
                 self.__writeln('print("%sync%");')
                 self.__expect('%sync%\r\n> ')
             except CommunicationTimeout:
-                raise DeviceNotFoundException('Device not found or wrong port')
+                raise DeviceNotFoundException('Device not found or wrong port, %s' % port)
 
         __sync()
 
