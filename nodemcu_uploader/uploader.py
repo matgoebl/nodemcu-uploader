@@ -59,6 +59,8 @@ class Uploader(object):
             log.debug('getting in sync with LUA')
             self.__clear_buffers()
             try:
+                self.__exchange('UUUUUUUU') # Send enough characters for auto-baud
+                time.sleep(0.15) # Wait for autobaud timer to expire
                 self.__exchange(';') # Get a defined state
                 self.__writeln('print("%sync%");')
                 self.__expect('%sync%\r\n> ')
